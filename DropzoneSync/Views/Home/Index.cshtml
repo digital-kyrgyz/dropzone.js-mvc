@@ -1,0 +1,56 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model Document
+<link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
+
+<form asp-action="Index" class="dropzone" id="docForm" enctype="multipart/form-data">
+    <div class="fallback">
+        <input asp-for="Documents" type="file" multiple="multiple" id="inputDocs" />
+    </div>
+    <button type="button" id="btn_upload">Upload</button>
+</form>
+
+<script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+
+<script>
+    function myParamName() {
+       return "Documents";
+    }
+        Dropzone.options.docForm = {
+        autoProcessQueue: false,
+        parallelUploads:10,
+        uploadMultiple: true,
+        paramName: myParamName,
+        maxFilesize: 256,
+        init: function (e) {
+
+            var myDropzone = this;
+
+            $('#btn_upload').on("click", function() {
+                myDropzone.processQueue(); // Tell Dropzone to process all queued files.
+            });
+
+            //this.on("complete", function(file, response){
+            // if (this.getQueuedFiles().length == 0 && this.getUploadingFiles().length == 0)
+            // {
+            //   var _this = this;
+            //     _this.removeAllFiles();
+            // }
+            //     console.log(this.getUploadingFiles());
+            //  });
+
+            // Event to send your custom data to your server
+            //myDropzone.on("sending", function(files, xhr, data) {
+
+            //    // First param is the variable name used server side
+            //    // Second param is the value, you can add what you what
+            //    // Here I added an input value
+            //    //data.append("data", "lorem")
+            //    data.append("inputDocs", $('#inputDocs').val());
+            //});
+
+        }
+    };
+</script>

@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "bf8068d0-1dd6-4452-9da9-229e7740bb32": {
+      "ProjectGuid": "bf8068d0-1dd6-4452-9da9-229e7740bb32",
+      "DisplayName": "DropzoneSync",
+      "ColorIndex": 0
+    }
+  },
+  "NextColorIndex": 1
+}
